@@ -151,7 +151,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="File.cpp" />
     <ClCompile Include="GameDefining.cpp" />
+    <ClCompile Include="Interpreter\Interpreter.cpp" />
+    <ClCompile Include="Interpreter\RegularExpression.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="File.h" />
+    <ClInclude Include="Interpreter\Interpreter.h" />
+    <ClInclude Include="Interpreter\RegularExpression.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
