@@ -151,15 +151,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="File.cpp" />
+    <ClCompile Include="File\File.cpp" />
     <ClCompile Include="GameDefining.cpp" />
     <ClCompile Include="Interpreter\Interpreter.cpp" />
     <ClCompile Include="Interpreter\RegularExpression.cpp" />
+    <ClCompile Include="Interpreter\Symbol.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="File.h" />
+    <ClInclude Include="definition\source\InterpreterDefinition.h" />
+    <ClInclude Include="definition\source\symbolsEnum.h" />
+    <ClInclude Include="File\File.h" />
     <ClInclude Include="Interpreter\Interpreter.h" />
     <ClInclude Include="Interpreter\RegularExpression.h" />
+    <ClInclude Include="Interpreter\Symbol.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

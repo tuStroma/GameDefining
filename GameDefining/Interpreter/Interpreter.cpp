@@ -25,8 +25,10 @@ bool Interpreter::Analysis(std::string file_path)
 	return true;
 }
 
-void Interpreter::LexicalAnalysis(std::string file_path)
+std::list<Symbol*> Interpreter::LexicalAnalysis(std::string file_path)
 {
+	std::list<Symbol*> symbol_list;
+
 	std::list<RegularExpression*> regex_list;
 
 	// Setup file
@@ -89,7 +91,8 @@ void Interpreter::LexicalAnalysis(std::string file_path)
 		// If word was found
 		if (fit)	
 		{
-			fit->generateValue(word.substr(0, fit_length));		// Execute action
+			Symbol* new_symbol = fit->generateValue(word.substr(0, fit_length));		// Execute action and create symbol
+			symbol_list.push_back(new_symbol);											// Add new symbol to the list
 		}
 		// If no pattern matches
 		else
@@ -108,6 +111,8 @@ void Interpreter::LexicalAnalysis(std::string file_path)
 			regex->reset();
 
 	}
+
+	return symbol_list;
 }
 
 

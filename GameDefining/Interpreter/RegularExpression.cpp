@@ -64,7 +64,7 @@ RegularExpression::RegularExpression(std::string const_string)
 	const_length = (int)const_string.length();
 }
 
-RegularExpression::RegularExpression(std::string const_string, void(*generate_value)(std::string))
+RegularExpression::RegularExpression(std::string const_string, Symbol* (*generate_value)(std::string))
 {
 	constant = true;
 	this->const_string = const_string;
@@ -143,7 +143,7 @@ void RegularExpression::setAcceptFunction(int column, bool (*function)(char), st
 	accept_functions[column] = new CharAcceptFunction(function, name);
 }
 
-void RegularExpression::setGenerateFunction(void (*generate_value)(std::string))
+void RegularExpression::setGenerateFunction(Symbol* (*generate_value)(std::string))
 {
 	this->generate_value = generate_value;
 }
@@ -207,9 +207,9 @@ int RegularExpression::getLastFit()
 {
 	return last_fit;
 }
-void RegularExpression::generateValue(std::string found) 
+Symbol* RegularExpression::generateValue(std::string found) 
 {
-	generate_value(found);
+	 return generate_value(found);
 }
 void RegularExpression::reset()
 {

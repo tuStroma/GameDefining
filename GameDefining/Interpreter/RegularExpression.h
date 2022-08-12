@@ -2,12 +2,12 @@
 #include <string>
 #include <iostream>
 
+#include "Symbol.h"
+
 #define	DEBUG_REGEX false
 
 class RegularExpression
 {
-public:
-
 	// Class to define subset of characters to describe a column
 	// Contains function to determine if given character falls into this set
 	class CharAcceptFunction
@@ -51,24 +51,24 @@ private:
 
 
 	// Finalisation
-	void (*generate_value)(std::string);			// Generate value of found string
+	Symbol* (*generate_value)(std::string);			// Generate value of found string
 
 public:
 	RegularExpression(int rows, int cols);
 	RegularExpression(std::string const_string);
-	RegularExpression(std::string const_string, void (*generate_value)(std::string));
+	RegularExpression(std::string const_string, Symbol*(*generate_value)(std::string));
 	~RegularExpression();
 
 	// Setup functions
 	void setTablePosition(int row, int col, int transition);
 	void setEndState(int state);
 	void setAcceptFunction(int column, bool (*function)(char), std::string name = "");
-	void setGenerateFunction(void (*generate_value)(std::string));
+	void setGenerateFunction(Symbol*(*generate_value)(std::string));
 
 	// Action functions
 	bool passCharacter(char c);						// Gets next character from string, checks if if matches the pattern and returns result (true - by default, false - if falls into unknown state); 0 - value of EOF
 	int getLastFit();								// Returns length of the longest fitting string
-	void generateValue(std::string found);			// Generate value of found string
+	Symbol* generateValue(std::string found);			// Generate value of found string
 	void reset();									// Resets searching
 
 	// Other

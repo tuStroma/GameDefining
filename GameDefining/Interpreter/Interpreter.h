@@ -5,14 +5,14 @@
 #include <list>
 
 #include "RegularExpression.h"
-#include "../File.h"
+#include "../File/File.h"
 
 class Interpreter
 {
 private:
 	std::list<RegularExpression*> lexical_analysis_list;
 
-	void LexicalAnalysis(std::string file_path);
+	std::list<Symbol*> LexicalAnalysis(std::string file_path);
 
 public:
 	Interpreter();
